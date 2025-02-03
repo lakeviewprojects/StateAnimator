@@ -1,6 +1,7 @@
 ## Animator
 
 Stateful Toggle Animation Controller
+A basic object to do play and idle sequences with roblox animations. 
 
 ## API 
 
@@ -65,3 +66,23 @@ local openAnimation = StateAnimator:New(Animator : object, ID : int--[[ Move ]],
 openAnimation:PlayThenIdle()
 ```
 
+You can do multiple animations, the StateAnimator object will handle the animation tracks. 
+Heres a bad example: 
+
+```lua 
+-- see loader above for details
+local openAnimation = StateAnimator:New(Animator : object, ID : int--[[ Move ]], ID : int--[[ Idle ]])
+local closeAnimation = StateAnimator:New(Animator : object, ID : int--[[ Move ]], ID : int--[[ Idle ]])
+
+while true do 
+    -- Open Track
+    openAnimation:PlayThenIdle()
+    Wait(math.random(2,5))
+
+    -- Close Track
+    closeAnimation:PlayThenIdle()
+    Wait(math.random(4,8))
+
+    -- repeat infinitely
+end 
+```
