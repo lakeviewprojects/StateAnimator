@@ -5,14 +5,26 @@ A basic object to do play and idle sequences with roblox animations.
 
 ## API 
 
+Get Animator Object for Rig 
+```lua 
+local Animator = StateAnimator:GetRigAnimator { Rig : RigInstance }
+```
+
 Load an animation with an idle state: 
 ```lua
-StateAnimator:New(Animator : object, ID : int--[[ Move ]], ID : int--[[ Idle ]])
+StateAnimator:New { 
+    animator : AnimatorInstance
+    movement_id : int
+    idle_id : int?
+}
 ```
 
 Load an animation with no idle state:
 ```lua
-StateAnimator:New(Animator : object, ID : int--[[ track id ]])
+StateAnimator:New { 
+    animator : AnimatorInstance
+    movement_id : int
+}
 ```
 
 Play an animation - can set repeat state to do it until stopped.
@@ -38,8 +50,6 @@ StateAnimator:Stop()
 --OR 
 StateAnimator:IdleStop()
 ```
-
-
 ### How to use:
 
 1. Upload your animation set to Roblox 
@@ -85,3 +95,17 @@ while true do
     -- repeat infinitely
 end 
 ```
+
+## Rojo File
+
+```json
+    "ReplicatedStorage":{
+    "StateAnimator":{
+        "$ignoreUnknownInstances": true,
+        "$path":"submodules/StateAnimator/ReplicatedStorage"
+      }
+    }
+```
+
+
+    
