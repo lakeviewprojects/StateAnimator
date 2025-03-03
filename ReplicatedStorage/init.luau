@@ -23,7 +23,7 @@ function Animation:New(props : { animator : RigAnimatorInstance, movement_id : i
 		animation.idle_animation.AnimationId = "rbxassetid://"..tostring(animation.idle_id)
 	end
 	--
-	animation:Load(animator)
+	animation:Load(props.animator)
 	--
 	return animation
 end
@@ -78,8 +78,8 @@ end
 
 --[[ New to create rig animator ]]
 
-function Animation:GetRigAnimator(props : {Rig : Instance}) : AnimatorInstance
-	local AnimationController = Rig:FindFirstChild ("AnimationController") or Instance.new("AnimationController", Rig)
+function Animation:GetRigAnimator(props : { Rig : Instance }) : AnimatorInstance
+	local AnimationController = props.Rig:FindFirstChild ("AnimationController") or Instance.new("AnimationController", props.Rig)
 	local Animator = AnimationController:FindFirstChild ("Animator") or Instance.new("Animator", AnimationController)
 	--
 	return Animator
