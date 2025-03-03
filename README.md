@@ -47,23 +47,22 @@ StateAnimator:IdleStop()
 2. Grab the animation IDs
 
 3. Instantiate an AnimationController and an Animator within the Animation Controller: 
+
 ```lua
-local Rig = script.Parent
-local AnimationController = Instance.new("AnimationController", Rig)
-local Animator = Instance.new("Animator", AnimationController)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local StateAnimator = require(ReplicatedStorage.StateAnimator)
+
+local Animator = StateAnimator:GetRigAnimator { Rig : RigInstance }
+
 ```
 
 4. Use the animator module to control your rig:
 
 ```lua 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Houses = ReplicatedStorage.Houses
-local StateAnimator = require(Houses.StateAnimator)
-
 -- See Animator object from example above
-local openAnimation = StateAnimator:New(Animator : object, ID : int--[[ Move ]], ID : int--[[ Idle ]])
+local animation = StateAnimator:New { animator : AnimatorInstance; movement_id : int, idle_id : int? }
 
-openAnimation:PlayThenIdle()
+animation:PlayThenIdle()
 ```
 
 You can do multiple animations, the StateAnimator object will handle the animation tracks. 
@@ -71,8 +70,8 @@ Heres a bad example:
 
 ```lua 
 -- see loader above for details
-local openAnimation = StateAnimator:New(Animator : object, ID : int--[[ Move ]], ID : int--[[ Idle ]])
-local closeAnimation = StateAnimator:New(Animator : object, ID : int--[[ Move ]], ID : int--[[ Idle ]])
+local openAnimation = StateAnimator:New { animator : AnimatorInstance; movement_id : int, idle_id : int? }
+local closeAnimation = StateAnimator:New { animator : AnimatorInstance; movement_id : int, idle_id : int? }
 
 while true do 
     -- Open Track
