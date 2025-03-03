@@ -102,7 +102,7 @@ end
     "ReplicatedStorage":{
     "StateAnimator":{
         "$ignoreUnknownInstances": true,
-        "$path":"submodules/StateAnimator/ReplicatedStorage"
+        "$path":"submodules/StateAnimator/ReplicatedStorage/"
       }
     }
 ```
