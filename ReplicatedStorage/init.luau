@@ -70,6 +70,17 @@ function Animation:Stop()
 	end
 end
 
+function Animation:Idle(old_idle : Animation)
+	if old_idle ~= nil then 
+		old_idle:IdleStop()
+	end
+	if self.idle_track ~= nil then 
+		self.idle_track:Play()
+	else 
+		warn(self,self.movement_animation," does not have an idle track.")
+	end
+end
+
 function Animation:IdleStop()
 	if self.idle_track ~= nil then 
 		self.idle_track:Stop()
